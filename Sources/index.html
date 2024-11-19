@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    </head>
+    
+    <body>
+        <center>
+        <h1>Get User Info</h1>
+        
+        <label id="name">User name is</label>
+        <button type="button" style="height:44px;width:auto" onclick="askNamePermission()">Get</button>
+        </br>
+        
+        <label id="age">User age is</label>
+        <button type="button" style="height:44px;width:auto" onclick="askAgePermission()">Get</button>
+        </center>
+        
+        <script>
+            function askNamePermission() {
+                window?.webkit?.messageHandlers?.askNamePermission?.postMessage({
+                    message: "",
+                })
+            }
+            function askAgePermission() {
+                window?.webkit?.messageHandlers?.askAgePermission?.postMessage({
+                    message: "",
+                })
+            }
+            function getUserName(name) {
+                const elem = document.getElementById("name");
+                elem.innerText = "User name is " + name;
+            }
+            function getUserAge(age) {
+                const elem = document.getElementById("age");
+                elem.innerText = "User age is " + age;
+            }
+        </script>
+    </body>
+</html>
