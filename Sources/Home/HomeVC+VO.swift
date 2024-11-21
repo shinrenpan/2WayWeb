@@ -1,5 +1,5 @@
 //
-//  HomeVO.swift
+//  HomeVC+VO.swift
 //
 //  Created by Joe Pan on 2024/10/11.
 //
@@ -7,7 +7,7 @@
 import UIKit
 import WebKit
 
-extension Home {
+extension HomeVC {
     @MainActor
     final class VO {
         let mainView = UIView(frame: .zero)

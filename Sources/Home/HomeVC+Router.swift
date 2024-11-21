@@ -1,13 +1,13 @@
 //
-//  HomeRouter.swift
+//  HomeVC+Router.swift
 //
 //  Created by Joe Pan on 2024/10/11.
 //
 
 import UIKit
 
-extension Home {
+extension HomeVC {
     final class Router {
-        weak var vc: VC?
+        weak var vc: HomeVC?
     }
 }

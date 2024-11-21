@@ -1,5 +1,5 @@
 //
-//  HomeVM.swift
+//  HomeVC+VM.swift
 //
 //  Created by Joe Pan on 2024/10/11.
 //
@@ -7,7 +7,7 @@
 import Observation
 import UIKit
 
-extension Home {
+extension HomeVC {
     @Observable
     final class VM {
         private(set) var state = State.none

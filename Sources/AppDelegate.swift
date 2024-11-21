@@ -18,7 +18,7 @@ extension AppDelegate: UIApplicationDelegate {
         let bounds = UIScreen.main.bounds
         let window = UIWindow(frame: bounds)
         window.backgroundColor = .white
-        window.rootViewController = Home.VC()
+        window.rootViewController = HomeVC()
         self.window = window
         window.makeKeyAndVisible()
 

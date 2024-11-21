@@ -1,12 +1,12 @@
 //
-//  HomeModel.swift
+//  HomeVC+Model.swift
 //
 //  Created by Joe Pan on 2024/10/11.
 //
 
 import UIKit
 
-extension Home {
+extension HomeVC {
     
     // MARK: - Action / Request
     
