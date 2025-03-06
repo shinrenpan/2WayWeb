@@ -1,1 +1,1 @@
-https://shinrenpan.github.io/17/
+shinrenpan/shinrenpan/discussions/20

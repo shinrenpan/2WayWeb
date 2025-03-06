@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift
+//  ViewController.swift
 //
 //  Created by Joe Pan on 2024/10/11.
 //
@@ -7,9 +7,9 @@
 import Observation
 import UIKit
 
-final class HomeVC: UIViewController {
-    private let vo = VO()
-    private let vm = VM()
+final class ViewController: UIViewController {
+    private let vo = ViewOutlet()
+    private let vm = ViewModel()
     private let router = Router()
     
     override func viewDidLoad() {
@@ -18,9 +18,11 @@ final class HomeVC: UIViewController {
         setupBinding()
         setupVO()
     }
-    
-    // MARK: - Setup Something
-    
+}
+
+// MARK: - Private
+
+private extension ViewController {
     func setupSelf() {
         view.backgroundColor = vo.mainView.backgroundColor
         router.vc = self
@@ -39,9 +41,9 @@ final class HomeVC: UIViewController {
                 case .none:
                     stateNone()
                 case .askNamePermission:
-                    stateAskNamepermission()
+                    stateAskNamePermission()
                 case .askAgePermission:
-                    stateAskAgepermission()
+                    stateAskAgePermission()
                 case let .sendNameToWeb(name):
                     stateSendNameToWeb(name: name)
                 case let .sendAgeToWeb(age):
@@ -72,41 +74,25 @@ final class HomeVC: UIViewController {
         vo.reloadWebView()
     }
     
-    // MARK: - Handle State
-    
     func stateNone() {}
     
-    func stateAskNamepermission() {
-        let alert = UIAlertController(title: "Permission", message: "Please allow to access your name", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            if let self {
-                vm.doAction(.sendName)
-            }
+    func stateAskNamePermission() {
+        router.showAskNamePermission { [weak self] _ in
+            self?.vm.doAction(.sendName)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
     }
     
-    func stateAskAgepermission() {
-        let alert = UIAlertController(title: "Permission", message: "Please allow to access your age", preferredStyle: .alert)
-        let okaction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            if let self {
-                vm.doAction(.sendAge)
-            }
+    func stateAskAgePermission() {
+        router.showAskAgePermission { [weak self] _ in
+            self?.vm.doAction(.sendAge)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(okaction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
     }
     
     func stateSendNameToWeb(name: String) {
-        vo.webView.evaluateJavaScript("getUserName(\"\(name)\")")
+        vo.sendName(name: name)
     }
     
     func stateSendAgeToWeb(age: Int) {
-        vo.webView.evaluateJavaScript("getUserAge(\(age))")
+        vo.sendAge(age: age)
     }
 }
