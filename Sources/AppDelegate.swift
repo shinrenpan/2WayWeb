@@ -1,27 +1,8 @@
-//
-//  AppDelegate.swift
-//
-//  Created by Joe Pan on 2024/10/11.
-//
-
 import UIKit
 
 @main
-final class AppDelegate: UIResponder {
-    var window: UIWindow?
-}
-
-// MARK: - UIApplicationDelegate
-
-extension AppDelegate: UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        let bounds = UIScreen.main.bounds
-        let window = UIWindow(frame: bounds)
-        window.backgroundColor = .white
-        window.rootViewController = ViewController()
-        self.window = window
-        window.makeKeyAndVisible()
-
-        return true
-    }
+final class AppDelegate: UIResponder, UIApplicationDelegate {
+  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+  }
 }
